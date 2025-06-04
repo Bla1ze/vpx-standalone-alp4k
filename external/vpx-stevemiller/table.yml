@@ -1,0 +1,21 @@
+---
+backglassVPSId: "Xt6Jvkkr3r"
+backglassChecksum: "B684249559C319A83BA9424A0BB0A70B"
+backglassNotes: "'STEVEMILLERBAND.directb2s' | Found in the 'Media pack.zip' download"
+backglassBundled: true
+romChecksum: "E3995B40E0DCD3A52974D651CA2ADD18"
+romNotes: "'slbmania.zip' | Found in the 'Media pack.zip' download"
+romBundled: true
+fps: 60
+tableVPSId: "VVMU7y7cmK"
+tagline: >- 
+  "Some people call me the space cowboy, yeah"
+testers:
+  - "Bla1ze"
+  - "CoffeeAtJoes"
+vpxVPSId: "Xt6Jvkkr3r"
+vpxChecksum: "2FA1A7AD22F42495B401B0580D0105B0"
+vpxNotes: "Download version 1.0.2"
+enabled: false # Bla1ze: Needs music!
+applyFixes:
+  - "bass"
