@@ -1,6 +1,6 @@
 # Steve Miller Band Original (2025)
 
-![Table Preview](../../images/vpx-funhouse.png)
+![Table Preview](../../images/steve-miller-preview.png)
 
 ---
 

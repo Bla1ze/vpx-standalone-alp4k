@@ -779,6 +779,7 @@ Links to these products on Amazon are through affiliate links.
 | [Stargate (Gottlieb 1995)](external/vpx-stargate) | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: | 40 |
 | [Stars (Stern 1978)](external/vpx-stars) | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: | 48 |
 | [Starship Troopers (Sega 1997)](external/vpx-starship) | :white_check_mark: |:white_check_mark: | :white_check_mark: | :x: | 54 |
+| [Steve Miller Band (Original 2025)](external/vpx-stevemiller) | :white_check_mark: | :x: | :white_check_mark: | :x: | 60 |
 | [Stingray (Stern 1977)](external/vpx-stingray) | :white_check_mark: | :x: | :white_check_mark: | :x: | 47 |
 | [Strange Science (Bally 1986)](external/vpx-strangescience) | :white_check_mark: | :x: | :white_check_mark: | :x: | 36 |
 | [Stranger Things – Stranger Edition (Original 2018)](external/vpx-strangerthings) | :white_check_mark: | :white_check_mark: | :x: | :x: | 45 |
