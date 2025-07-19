@@ -210,9 +210,8 @@ Sub Table1_Init
 	'Init Other Stuff
 	InitLights:InitOptions
 	Rails.visible = DesktopMode
-    WaitHere.isdropped=1
 	Dim i: For i=1 to 5:CraneHit(i).IsDropped = 1:Next
-	
+	Wall004.isdropped = 1
 
 	' Fast Flips
 	On Error Resume Next 
@@ -610,9 +609,15 @@ Dim BatRampRadius:BatRampRadius = SQR((LowerTrack.X - Sw64.X)^2 + (LowerTrack.Y 
 
 Dim myBall, fakeBall, RampDir, RampPos
 
-Sub sw64_Hit: If ActiveBall.VelY<0 Then Controller.Switch(64) = 1 :End If: End Sub
+Sub sw64_Hit:Wall004.isdropped = 0:vpmtimer.AddTimer 6000, "Wall004.isdropped=1'"
+ If ActiveBall.VelY<0 Then Controller.Switch(64) = 1 
+Set myBall= ActiveBall
+End Sub
 
-Sub Trigger1_hit : Set myBall= ActiveBall:PlaysoundAt "fx_rrturn", Trigger1:If ActiveBall.VelX<0 And ActiveBall.VelX>-5 Then ActiveBall.VelX = -10 :End If : End Sub
+Sub Trigger1_hit:PlaysoundAt "fx_rrturn",Trigger1:End Sub
+
+Sub Kicker001_hit:vpmtimer.addtimer 150,"Kicker001.kick 270, 8'":Kicker002.enabled = 1:vpmtimer.addtimer 6000,"Kicker002.enabled = 0'":end sub
+Sub Kicker002_hit:vpmtimer.addtimer 6000,"Kicker002.kick 270, 0.5'":end sub
 
 Sub SolBatRamp(enabled)
 	If Enabled Then
@@ -650,7 +655,7 @@ Sub DropTheBall(n)
 		Case 1
 			If NOT IsEmpty(myBall) Then
 				myBall.VelZ=5
-				Controller.Switch(64) = 0
+				Controller.Switch(64) = 0                
 			End If
 			RampUp.collidable=0
 			RampDown.collidable=1
@@ -670,6 +675,7 @@ End Sub
 Sub BallMake_hit : MoveBatMobile.Enabled=0 :  Me.DestroyBall : fakeBall = Empty : End Sub
 Sub BallDestroy_Hit : MoveBatMobile.Enabled=0 :  Me.DestroyBall : fakeBall = Empty : vpmtimer.pulsesw 47: End Sub
 
+Sub SaveMe_Hit:activeball.x=164:activeball.y=190:Controller.Switch(64) = 0: End Sub
 '************************************************************************
 ' 						JOKER MOTOR
 '************************************************************************
@@ -725,7 +731,7 @@ Sub UpdateCrane_timer
 End Sub
 
 Sub UpdateCraneMech(aCurrPos,aSpeed,aLastPos)
-	CurMech1Pos = 250 - aCurrPos
+	CurMech1Pos = 249 - aCurrPos
 	UpdateCrane.Enabled = 1
 	If aSpeed=0 Then
 		StopSound "Motor":MotorSnd=0
@@ -735,17 +741,17 @@ Sub UpdateCraneMech(aCurrPos,aSpeed,aLastPos)
 End Sub
 
 Sub UpdateParts
-	If CranePos > (250 -2) Then
+	If CranePos > (249 -2) Then
 		CraneHit(5).IsDropped = 0
-	ElseIf CranePos<(250 -28) AND CranePos > (250 -35) Then
+	ElseIf CranePos<(249 -28) AND CranePos > (249 -35) Then
 		CraneHit(4).IsDropped = 0
-	ElseIf CranePos<(250 -45) AND CranePos > (250 -52) Then
+	ElseIf CranePos<(249 -45) AND CranePos > (249 -52) Then
 		CraneHit(3).IsDropped = 0
-	ElseIf CranePos<(250 -57) AND CranePos > (250 -64) Then
+	ElseIf CranePos<(249 -57) AND CranePos > (249 -64) Then
 		CraneHit(2).IsDropped = 0
-	ElseIf CranePos<(250 -70) AND CranePos > (250 -77) Then
+	ElseIf CranePos<(249 -70) AND CranePos > (249 -77) Then
 		CraneHit(1).IsDropped = 0
-	ElseIf CranePos<(250 -86) Then
+	ElseIf CranePos<(249 -86) Then
 		CraneHit(0).IsDropped = 0
 	Else
 		Dim i: For each i in CraneHit:i.IsDropped=1 : Next
@@ -981,7 +987,7 @@ Sub ShooterEnd_Hit:If ActiveBall.Z > 30  Then Me.TimerInterval=100:Me.TimerEnabl
 Sub ShooterEnd_Timer(): Me.TimerEnabled=0 : PlaySoundAt "fx_BallDrop", ShooterEnd : End Sub
 
 Sub LWREnter_Hit: PlaySoundAt "fx_wireramp_enter",LWREnter:End Sub
-Sub LWRExit_hit:StopSound "fx_wireramp_enter":PlaysoundAt "fx_wireramp_exit", ActiveBall:Me.TimerInterval=200:Me.TimerEnabled=1:ActiveBall.VelY=1:WaitHere.isdropped=1:End Sub
+Sub LWRExit_hit:StopSound "fx_wireramp_enter":PlaysoundAt "fx_wireramp_exit", ActiveBall:Me.TimerInterval=200:Me.TimerEnabled=1:ActiveBall.VelY=1:End Sub
 Sub LWRExit_timer:Me.TimerEnabled=0:PlaysoundAt "fx_BallDrop",LWRExit:End Sub
 
 Sub RWREnter_Hit(): PlaySoundAt "fx_wireramp_enter",RWREnter:	End Sub
@@ -995,7 +1001,7 @@ Sub RREnter_UnHit():If ActiveBall.VelY > 0 Then StopSound "fx_rrenter":End If:En
 
 Sub BREnter_Hit():PlaySoundAt "fx_brenter",	BREnter:End Sub
 Sub BRREnter1_Hit():PlaySoundAt "fx_brbump", BREnter1:End Sub
-Sub WHtr_Hit:WaitHere.isdropped=0:End Sub
+
 
 ' *********************************************************************
 ' 						Real Time Updates
